@@ -3,27 +3,32 @@ import React from 'react';
 import Button from '../UI/Button/Button';
 import starRate from '../../assets/star-rate.svg';
 import logoComment from '../../assets/comment.png';
+import cheemsImg from '../../assets/cheems.jpg';
 
 import './Product.css';
 
 const Product = () => {
     return (
         <div className='CardProduct'>
-            <p>Basic</p>
-            <div>
-                <img />
+            <p className='BasicLabel'>BASIC</p>
+            <div className='ProductImgContainer'>
+                <img src={cheemsImg} alt='product-image' />
             </div>
             <div>
-                <p>Coffee Maker</p>
-                <div>
-                    <img src={starRate} alt='star-rate-logo' />
-                    <img src={starRate} alt='star-rate-logo' />
-                    <img src={starRate} alt='star-rate-logo' />
-                    <img src={starRate} alt='star-rate-logo' />
-                    <>2</>
-                    <img src={logoComment} alt='logo-comment' className='LogoComment' />
+                <p className='ProductName'>Coffee Maker</p>
+                <div className='RateSection'>
+                    <div className='StarsRate'>
+                        <img src={starRate} alt='star-rate-logo' />
+                        <img src={starRate} alt='star-rate-logo' />
+                        <img src={starRate} alt='star-rate-logo' />
+                        <img src={starRate} alt='star-rate-logo' />
+                    </div>
+                    <div className='Comments'>
+                        <p>2</p>
+                        <img src={logoComment} alt='logo-comment' />
+                    </div>
                 </div>
-                <p>$105</p>
+                <p className='Price'>$105</p>
             </div>
             <div className='ButtonsSection'>
                 <div className='BtnProduct'>

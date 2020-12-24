@@ -1,0 +1,17 @@
+.HeaderBar {
+    height: 90px;
+    background-color: #3498DB;
+}
+
+.LogoGlobantContainer {
+    margin-left: 37px;
+    width: fit-content;
+    display: inline-block;
+}
+
+.LogoShoppingCartContainer {
+    width: fit-content;
+    float: right;
+    margin-right: 75px;
+    margin-top: 23px;
+}

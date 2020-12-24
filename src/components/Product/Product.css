@@ -1,0 +1,19 @@
+.CardProduct {
+    /* border: 1px solid red; */
+    width: 240px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.LogoComment {
+    width: 12px;
+    height: 10px;
+}
+
+.ButtonsSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.BtnProduct {
+    margin-bottom: 5px;
+}

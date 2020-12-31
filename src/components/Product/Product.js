@@ -3,19 +3,20 @@ import React from 'react';
 import Button from '../UI/Button/Button';
 import starRate from '../../assets/star-rate.svg';
 import logoComment from '../../assets/comment.png';
-import cheemsImg from '../../assets/cheems.jpg';
 
 import './Product.css';
 
-const Product = () => {
+const Product = (props) => {
+    const {name, rate, price, commentsCounter, isBasics, imgURL} = props;
+
     return (
         <div className='CardProduct'>
-            <p className='BasicLabel'>BASIC</p>
+            {isBasics ? <p className='BasicLabel'>BASIC</p> : null}
             <div className='ProductImgContainer'>
-                <img src={cheemsImg} alt='product-image' />
+                <img src={imgURL} alt='product' />
             </div>
             <div>
-                <p className='ProductName'>Coffee Maker</p>
+                <p className='ProductName'>{name}</p>
                 <div className='RateSection'>
                     <div className='StarsRate'>
                         <img src={starRate} alt='star-rate-logo' />
@@ -24,11 +25,11 @@ const Product = () => {
                         <img src={starRate} alt='star-rate-logo' />
                     </div>
                     <div className='Comments'>
-                        <p>2</p>
+                        <p>{commentsCounter}</p>
                         <img src={logoComment} alt='logo-comment' />
                     </div>
                 </div>
-                <p className='Price'>$105</p>
+                <p className='Price'>${price}</p>
             </div>
             <div className='ButtonsSection'>
                 <div className='BtnProduct'>

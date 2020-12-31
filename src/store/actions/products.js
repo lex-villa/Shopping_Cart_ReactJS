@@ -25,12 +25,16 @@ export const fetchProducts = () => {
         dispatch(fetchProductsStart());
 
         fetch('http://localhost:8080/products')
-        .then(response => {
-            console.log('fetch de productos');
-            console.log(response);
-        })
-        .catch(error => {
-            dispatch(fetchProductsFail(error));
-        });
+            .then(response => {
+                return response.json();
+            })
+            .then(responseJSON => {
+                console.log('fetch de productos');
+                console.log(responseJSON.products);
+                dispatch(fetchProductsSuccess(responseJSON.products));
+            })
+            .catch(error => {
+                dispatch(fetchProductsFail(error));
+            });
     };
 };

@@ -6,13 +6,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import App from './App';
-import productsGalleryReducer from './store/reducers/productsGallery';
+import productsReducer from './store/reducers/products';
 import orderReducer from './store/reducers/order';
 
 import './index.css';
 
 const rootReducer = combineReducers({
-  productsGallery: productsGalleryReducer,
+  products: productsReducer,
   order: orderReducer,
 });
 

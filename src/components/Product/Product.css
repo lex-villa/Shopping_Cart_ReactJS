@@ -1,5 +1,5 @@
 .CardProduct {
-    /* border: 1px solid red; */
+     border: 1px solid red; 
     width: 240px;
     border-bottom: 1px solid #D3D3D3;
 }
@@ -12,6 +12,11 @@
     text-align: center;
     background-color: #11D000;
     color: white;
+}
+
+.BasicLabelFaked {
+    width: 59px;
+    height: 15px;
 }
 
 .ProductImgContainer {

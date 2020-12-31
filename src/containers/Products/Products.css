@@ -1,0 +1,12 @@
+.ProductsSectionTitle {
+    font-size: 36px;
+    line-height: 42px;
+    margin-bottom: 22px;
+}
+
+.ProductsGridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 240px);
+    grid-column-gap: 140px;
+    grid-row-gap: 30px;
+}

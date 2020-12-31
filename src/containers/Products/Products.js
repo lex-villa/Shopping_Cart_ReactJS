@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Product from '../../components/Product/Product';
 
+import './Products.css';
+
 
 const Products = (props) => {
     const { onFetchProducts, products } = props;
@@ -13,20 +15,23 @@ const Products = (props) => {
     }, [onFetchProducts]);
 
     return (
-        <>
-            {products.map((product) => {
-                return (
-                    <Product
-                        name={product.name}
-                        price={product.price}
-                        imgURL={product.img}
-                        commentsCounter={product.comments}
-                        isBasics={product.basics}
-                        rate={product.rate}
-                    />
-                );
-            })}
-        </>
+        <div>
+            <h2 className='ProductsSectionTitle'>Our products:</h2>
+            <div className='ProductsGridContainer'>
+                {products.map((product) => {
+                    return (
+                        <Product
+                            name={product.name}
+                            price={product.price}
+                            imgURL={product.img}
+                            commentsCounter={product.comments}
+                            isBasics={product.basics}
+                            rate={product.rate}
+                        />
+                    );
+                })}
+            </div>
+        </div>
     );
 };
 

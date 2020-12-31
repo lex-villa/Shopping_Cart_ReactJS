@@ -11,7 +11,7 @@ const Product = (props) => {
 
     return (
         <div className='CardProduct'>
-            {isBasics ? <p className='BasicLabel'>BASIC</p> : null}
+            {isBasics ? <p className='BasicLabel'>BASIC</p> : <p className='BasicLabelFaked'></p>}
             <div className='ProductImgContainer'>
                 <img src={imgURL} alt='product' />
             </div>

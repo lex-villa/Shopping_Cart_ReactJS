@@ -6,10 +6,10 @@ export const fetchProductsStart = () => {
     };
 };
 
-export const fetchProductsSuccess = (products) => {
+export const fetchProductsSuccess = (payload) => {
     return {
         type: actionTypes.FETCH_PRODUCTS_SUCCESS,
-        products: products,
+        payload: payload,
     };
 };
 
@@ -20,21 +20,9 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = () => {
-    return (dispatch) => {
-        dispatch(fetchProductsStart());
-
-        fetch('http://localhost:8080/products')
-            .then(response => {
-                return response.json();
-            })
-            .then(responseJSON => {
-                console.log('fetch de productos');
-                console.log(responseJSON.products);
-                dispatch(fetchProductsSuccess(responseJSON.products));
-            })
-            .catch(error => {
-                dispatch(fetchProductsFail(error));
-            });
+export const fetchProducts = (pageNumber) => {
+    return {
+        type: actionTypes.FETCH_PRODUCTS,
+        pageNumber: pageNumber,
     };
 };

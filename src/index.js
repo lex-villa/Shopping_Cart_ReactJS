@@ -4,23 +4,30 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import App from './App';
 import productsReducer from './store/reducers/products';
 import orderReducer from './store/reducers/order';
+import { watchProducts } from './store/sagas/index';
 
 import './index.css';
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   products: productsReducer,
   order: orderReducer,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, sagaMiddleware)
 ));
+
+sagaMiddleware.run(watchProducts);
 
 
 ReactDOM.render(

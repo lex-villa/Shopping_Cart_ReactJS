@@ -1,7 +1,12 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    products: [],
+    pageNumber: 1,
+    items: null,
+    nextPage: null,
+    pages: null,
+    prevPage: null,
+    products: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,7 +14,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
-                products: action.products,
+                ...action.payload,
+                products: state.products.concat(action.payload.products),
             };
 
         default: return state;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+
 import * as actions from '../../store/actions/index';
 import Product from '../../components/Product/Product';
 
@@ -8,11 +9,16 @@ import './Products.css';
 
 
 const Products = (props) => {
-    const { onFetchProducts, products } = props;
+    const { onFetchProducts, products, pageNumber, state } = props;
 
     useEffect(() => {
-        onFetchProducts();
-    }, [onFetchProducts]);
+        onFetchProducts(pageNumber);
+        console.log("State del reducer desde el componente")
+        console.log(state)
+        console.log("Products del reducer desde el componente")
+        console.log(products)
+
+    }, [onFetchProducts, pageNumber]);
 
     return (
         <div>
@@ -21,6 +27,7 @@ const Products = (props) => {
                 {products.map((product) => {
                     return (
                         <Product
+                            key={product.id}
                             name={product.name}
                             price={product.price}
                             imgURL={product.img}
@@ -39,12 +46,14 @@ const Products = (props) => {
 const mapStateToProps = (state) => {
     return {
         products: state.products.products,
+        pageNumber: state.products.pageNumber,
+        state: state,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFetchProducts: () => dispatch(actions.fetchProducts()),
+        onFetchProducts: (pageNumber) => dispatch(actions.fetchProducts(pageNumber)),
     }
 };
 

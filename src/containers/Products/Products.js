@@ -64,7 +64,6 @@ const Products = (props) => {
             };
         };
     };
-        console.log('[response]', response.pages)
         console.log('[products]', products)
 
         return (

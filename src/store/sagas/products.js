@@ -7,6 +7,7 @@ export function* fetchProductsSaga(action) {
         const response = yield fetch(`http://localhost:8080/products?page=${action.pageNumber}`);
         const responseJSON = yield response.json();
 
+        
         yield put(actions.fetchProductsSuccess(responseJSON))
 
     } catch (error) {

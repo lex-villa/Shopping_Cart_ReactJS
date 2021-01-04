@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './FilterPrices.css';
+
 const FilterPrices = () => {
     return (
-        <div>
+        <div className='FilterPricesContainer'>
             <p>Prices:</p>
             <div>
                 <input type='radio' id='firstRange' name='pricesRange' />

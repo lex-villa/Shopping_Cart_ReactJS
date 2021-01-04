@@ -9,9 +9,16 @@ import './FilterBar.css';
 const FilterBar = () => {
     return (
         <div className='FilterBarContainer'>
-            <FilterBasics />
-            <FilterPrices />
-            <FilterSortBy />
+            <p className='FilterBarTitle'>Filters:</p>
+            <div className='Basics'>
+                <FilterBasics />
+            </div>
+            <div className='Prices'>
+                <FilterPrices />
+            </div>
+            <div className='SortBy'>
+                <FilterSortBy />
+            </div>
         </div>
     );
 };

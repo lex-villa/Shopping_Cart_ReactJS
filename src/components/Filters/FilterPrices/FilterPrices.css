@@ -1,3 +1,15 @@
-.FilterPricesContainer {
-    border: 1px solid red;
+.FilterPricesContainer {}
+
+.FilterPricesContainer p {
+    margin-bottom: 10px;
+}
+
+.RadioGroupContainer div:nth-child(-n + 2) {
+    margin-bottom: 5px;
+}
+
+.RadioGroupItem {}
+
+.RadioGroupItem input {
+    margin-right: 10px;
 }

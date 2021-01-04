@@ -1,3 +1,16 @@
 .FilterBarContainer {
-    border: 1px solid black;
+    border: 1px solid purple;
+    width: 175px;
+}
+
+.FilterBarTitle {
+    margin-bottom: 10px;
+}
+
+.Basics {
+    margin-bottom: 25px;
+}
+
+.Prices {
+    margin-bottom: 25px;
 }

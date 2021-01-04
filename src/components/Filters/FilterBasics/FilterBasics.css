@@ -1,3 +1,6 @@
-.FilterBasicsContainer {
-    border: 1px solid red;
+.FilterBasicsContainer {}
+
+
+.FilterBasicsContainer input {
+    margin-right: 10px;
 }

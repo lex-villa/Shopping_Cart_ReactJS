@@ -1,3 +1,8 @@
 .FilterSortByContainer {
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.FilterSortByContainer label {
+    margin-bottom: 5px;
 }

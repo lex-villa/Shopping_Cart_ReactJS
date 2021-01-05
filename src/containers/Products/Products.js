@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useReferredState from '../../hooks/useReferredState';
 import { connect } from 'react-redux';
 
 
@@ -26,46 +27,50 @@ const Products = (props) => {
 
 
 
-    const [response, setResponse] = useState({})
-    const [products, setProducts] = useState([]);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [response, setResponse] = useReferredState({})
+    const [products, setProducts] = useReferredState([]);
+    const [pageNumber, setPageNumber] = useReferredState(1);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/products?page=${pageNumber}`)
+        fetch(`http://localhost:8080/products?page=${pageNumber.current}`)
             .then(response => {
                 return response.json();
             })
             .then(responseJSON => {
                 setResponse(responseJSON)
-                setProducts((prev) => [...prev, ...responseJSON.products]);
+                setProducts([...products.current, ...responseJSON.products]);
             })
-    }, [pageNumber]);
-
+    }, [pageNumber.current]);
 
     const handleScroll = (event) => {
         const { scrollTop, clientHeight, scrollHeight } = event.srcElement.documentElement;
-        console.log('entro al handleScroll')
-        console.log(event)
-        console.log("[scrollTop]", scrollTop);
-        console.log("[clientHeight]", clientHeight);
-        console.log("[scrollHeight]", scrollHeight);
-        console.log("[scrollHeight - scrollTop]", scrollHeight - scrollTop)
-        console.log("[clientHeight]", clientHeight);
-        console.log(Math.ceil(scrollHeight - scrollTop) === clientHeight)
+        // console.log('entro al handleScroll')
+        // console.log(event)
+        // console.log("[scrollTop]", scrollTop);
+        // console.log("[clientHeight]", clientHeight);
+        // console.log("[scrollHeight]", scrollHeight);
+        // console.log("[scrollHeight - scrollTop]", scrollHeight - scrollTop)
+        // console.log("[clientHeight]", clientHeight);
+        // console.log("Llego al fondo??", Math.ceil(scrollHeight - scrollTop) === clientHeight)
 
-        console.log("response", response)
+        // console.log("response dentro del handleScroll", response.current)
+        // console.log("products dentro del handleScroll", products.current)
+        // console.log("page num dentro del handleScroll", pageNumber.current)
+
         if (Math.ceil(scrollHeight - scrollTop) === clientHeight) {
-            console.log("response.currentPage ", response.currentPage)
-            console.log("response.pages", response.pages)
-            console.log("response.currentPage === response.pages", response.currentPage === response.pages)
-            if (!(response.currentPage === response.pages)) {
-                setPageNumber(prev => prev + 1);
+            // console.log("response.currentPage ", response.current.currentPage)
+            // console.log("response.pages", response.current.pages)
+            // console.log("response.currentPage === response.pages", response.current.currentPage === response.current.pages)
+            if (!(response.current.currentPage === response.current.pages)) {
+                // console.log("entrando a subir la pagina")
+                setPageNumber(pageNumber.current + 1);
             }
             else {
-                setProducts((prev) => [...prev, ...products.products])
-                console.log('[page]', pageNumber)
+                setProducts((prev) => [...prev, ...products.current])
+                // console.log('[page]', pageNumber.current)
             };
         };
+        
     };
 
     useEffect(() => {
@@ -77,13 +82,12 @@ const Products = (props) => {
         }
     }, [])
 
-    console.log('[products]', products)
-
+    
     return (
         <div className='GridContainer'>
             <h2 className='ProductsSectionTitle'>Our products:</h2>
             <div className='ProductsGridContainer' onScroll={handleScroll}>
-                {products.map((product) => {
+                {products.current.map((product) => {
                     return (
                         <Product
                             key={product.id}

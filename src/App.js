@@ -11,12 +11,13 @@ function App() {
     <div>
       <HeaderBar />
       <main>
-        <div className='FilterBarColumn'>
+        {/* <div className='FilterBarColumn'>
           <FilterBar />
-        </div>
-        <div className='ProductsColumn'>
+        </div> */}
+        {/* <div className='ProductsColumn'>
           <Products />
-        </div>
+        </div> */}
+        <Products />
       </main>
     </div>
   );

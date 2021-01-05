@@ -11,13 +11,8 @@ function App() {
     <div>
       <HeaderBar />
       <main>
-        {/* <div className='FilterBarColumn'>
           <FilterBar />
-        </div> */}
-        {/* <div className='ProductsColumn'>
           <Products />
-        </div> */}
-        <Products />
       </main>
     </div>
   );

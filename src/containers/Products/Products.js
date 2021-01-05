@@ -66,7 +66,7 @@ const Products = (props) => {
                 setPageNumber(pageNumber.current + 1);
             }
             else {
-                setProducts((prev) => [...prev, ...products.current])
+                setProducts([...products.current])
                 // console.log('[page]', pageNumber.current)
             };
         };

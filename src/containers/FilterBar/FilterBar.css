@@ -1,6 +1,15 @@
+.FilterBarSection {
+    border: 2px solid red;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+}
+
 .FilterBarContainer {
     border: 1px solid purple;
     width: 175px;
+    height: fit-content;
+    margin-top: 50px;
 }
 
 .FilterBarTitle {

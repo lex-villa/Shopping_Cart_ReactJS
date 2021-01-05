@@ -28,7 +28,7 @@ app.get('/products', (req, res) => {
       let pages = result.length / items > 1 ? 2 : 1;
       let start = (page - 1) * items;
       let end = Math.min(items * page, result.length);
-      result = mockProducts
+      result = result
         .slice(start, end)
         .map((_product, index) => ({ ..._product, img: imgData[index].download_url }));
 

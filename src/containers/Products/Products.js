@@ -67,7 +67,7 @@ const Products = (props) => {
         console.log('[products]', products)
 
         return (
-            <div>
+            <div className='GridContainer'>
                 <h2 className='ProductsSectionTitle'>Our products:</h2>
                 <div className='ProductsGridContainer' onScroll={handleScroll}>
                     {products.map((product) => {

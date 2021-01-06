@@ -4,9 +4,9 @@ import shoppingCartSVG from '../../../assets/cart.svg';
 
 import './ShoppingCartLogo.css'
 
-const ShoppingCartLogo = () => {
+const ShoppingCartLogo = (props) => {
     return (
-        <div>
+        <div className='CartToggle' onClick={props.clicked}>
             <img src={shoppingCartSVG} alt='shopping-cart-svg' />
             <p className='PriceShoppingCart'>3</p>
         </div>

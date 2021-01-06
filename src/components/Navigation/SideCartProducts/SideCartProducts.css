@@ -1,3 +1,4 @@
+
 .SideDrawer {
     position: fixed;
     width: 500px;
@@ -7,6 +8,8 @@
     z-index: 200;
     background-color: white;
     transition: transform 0.3s ease-out;
+    overflow: scroll;
+    border: 3px solid purple;
 }
 
 .Open {
@@ -15,4 +18,43 @@
 
 .Close {
     transform: translateX(100%);
+}
+
+.TitleSideCartProducts {
+    height: 30px;
+    display: flex;
+    padding-top: 30px;
+    padding-left: 45px;
+    margin-bottom: 35px;
+}
+
+.P_tag-TitleSideCartProducts {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.Img_tag-TitleSideCartProducts {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    width: 30px;
+    height: 30px;
+}
+
+.Subtotal {
+    font-size: 18px;
+    line-height: 21px;
+    margin-left: 45px;
+}
+
+.Subtotal span {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.btnProceedPayment{
+    width: 83%;
+    margin: auto;
+    margin-top: 15px;
 }

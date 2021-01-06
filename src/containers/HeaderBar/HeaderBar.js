@@ -5,14 +5,14 @@ import ShoppingCartLogo from '../../components/Navigation/ShoppingCartLogo/Shopp
 
 import './HeaderBar.css';
 
-const HeaderBar = () => {
+const HeaderBar = (props) => {
     return (
         <header className='HeaderBar'>
             <div className='LogoGlobantContainer'>
                 <Logo />
             </div>
             <div className='LogoShoppingCartContainer'>
-                <ShoppingCartLogo />
+                <ShoppingCartLogo clicked={props.clicked} />
             </div>
         </header>
     )

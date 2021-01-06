@@ -1,3 +1,7 @@
+.CartToggle {
+    cursor: pointer;
+}
+
 .PriceShoppingCart {
     background: lightblue;
     border-radius: 50%;

@@ -1,6 +1,10 @@
 .HeaderBar {
     height: 90px;
     background-color: #3498DB;
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    width: 100%;
 }
 
 .LogoGlobantContainer {

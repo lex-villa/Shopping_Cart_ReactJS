@@ -1,6 +1,7 @@
-main {
+.MainSection {
   border: 2px solid green;
   display: flex;
+  margin-top: 90px;
 }
 
 .FilterBarColumn {

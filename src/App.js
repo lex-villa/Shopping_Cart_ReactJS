@@ -10,6 +10,10 @@ import './App.css';
 function App() {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
+  const sideDrawerClosedHandler = () => {
+    setShowSideDrawer(false);
+  };
+
   const drawerToggleClicked = () => {
     setShowSideDrawer(!showSideDrawer)
   };
@@ -17,8 +21,8 @@ function App() {
   return (
     <div>
       <HeaderBar clicked={drawerToggleClicked} />
-      <SideCartProducts open={showSideDrawer} />
-      <main>
+      <SideCartProducts closed={sideDrawerClosedHandler} open={showSideDrawer} />
+      <main className='MainSection'>
           <FilterBar />
           <Products />
       </main>

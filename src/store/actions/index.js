@@ -4,3 +4,7 @@ export {
     fetchProductsSuccess,
     fetchProductsFail,
 } from './products';
+
+export {
+    addProduct
+} from './cart';

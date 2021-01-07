@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import closeLogo from '../../../assets/close.png';
@@ -22,16 +23,22 @@ const SideCartProducts = (props) => {
                     <p className="P_tag-TitleSideCartProducts">Cart:</p>
                     <img src={closeLogo} className="Img_tag-TitleSideCartProducts" alt="close button" onClick={props.closed} />
                 </div>
-                <p className="Subtotal">Subtotal: <span>$315</span></p>
+                <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
                     <Button btnType="Details">Proceed to payment</Button>
                 </div>
-                <ProductInCart />
-                <ProductInCart />
-                <ProductInCart />
-                <ProductInCart />
-                <ProductInCart />
-                <p className="Subtotal">Subtotal: <span>$315</span></p>
+                {props.productsInCart.map((product) => {
+                    return(
+                        <>
+                            <ProductInCart 
+                                img={product.img}
+                                name={product.name}
+                                price={product.price}    
+                            />
+                        </>
+                    );
+                })}
+                <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
                     <Button btnType="Details">Proceed to payment</Button>
                 </div>
@@ -40,4 +47,11 @@ const SideCartProducts = (props) => {
     );
 };
 
-export default SideCartProducts;
+const mapStateToProps = (state) => {
+    return {
+        productsInCart: state.cart.cartProducts,
+        totalPrice: state.cart.totalPrice,
+    };
+};
+
+export default connect(mapStateToProps)(SideCartProducts);

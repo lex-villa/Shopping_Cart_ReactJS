@@ -5,13 +5,13 @@ import cheems from '../../../assets/cheems.jpg';
 
 import './ProductInCart.css';
 
-const ProductInCart = () => {
+const ProductInCart = (props) => {
     return (
         <div className={"ProductItemCartContainer"}>
             <div className="ProductItemCart">
-                <img className="Img_ProductItem" src={cheems} alt="product"/>
-                <p className="Name_ProductItem">Coffe Maker</p>
-                <p className="Price_ProductItem">$105</p>
+                <img className="Img_ProductItem" src={props.img} alt="product"/>
+                <p className="Name_ProductItem">{props.name}</p>
+                <p className="Price_ProductItem">{props.price}</p>
                 <img className="TrashIcon_ProductItem" src={trashIcon} alt="trash button" />
             </div>
         </div>

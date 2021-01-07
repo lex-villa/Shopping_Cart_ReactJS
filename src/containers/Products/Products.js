@@ -70,7 +70,7 @@ const Products = (props) => {
                 // console.log('[page]', pageNumber.current)
             };
         };
-        
+
     };
 
     useEffect(() => {
@@ -82,7 +82,7 @@ const Products = (props) => {
         }
     }, [])
 
-    
+
     return (
         <div className='GridContainer'>
             <h2 className='ProductsSectionTitle'>Our products:</h2>
@@ -97,6 +97,7 @@ const Products = (props) => {
                             commentsCounter={product.comments}
                             isBasics={product.basics}
                             rate={product.rate}
+                            productAdded={()=> props.onProductAdded(product)}
                         />
                     );
                 })}
@@ -106,19 +107,18 @@ const Products = (props) => {
 };
 
 
-// const mapStateToProps = (state) => {
-//     return {
-//         products: state.products.products,
-//         pageNumber: state.products.pageNumber,
-//   
-//     };
-// };
+const mapStateToProps = (state) => {
+    return {
+        products: state.products.products,
+        pageNumber: state.products.pageNumber,
+    };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         onFetchProducts: (pageNumber) => dispatch(actions.fetchProducts(pageNumber)),
-//     }
-// };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onFetchProducts: (pageNumber) => dispatch(actions.fetchProducts(pageNumber)),
+        onProductAdded: (productObj) => dispatch(actions.addProduct(productObj)),
+    }
+};
 
-export default Products;
-// connect(mapStateToProps, mapDispatchToProps)
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

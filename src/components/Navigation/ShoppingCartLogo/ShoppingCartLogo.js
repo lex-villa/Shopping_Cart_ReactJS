@@ -8,7 +8,7 @@ const ShoppingCartLogo = (props) => {
     return (
         <div className='CartToggle' onClick={props.clicked}>
             <img src={shoppingCartSVG} alt='shopping-cart-svg' />
-            <p className='PriceShoppingCart'>3</p>
+            <p className='PriceShoppingCart'>{props.itemCounter}</p>
         </div>
     );
 };

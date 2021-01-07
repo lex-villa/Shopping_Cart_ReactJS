@@ -42,6 +42,7 @@ const Product = (props) => {
                 <div className='BtnProduct'>
                     <Button
                         btnType='AddToCart'
+                        clicked={props.productAdded}
                     >
                         Add to cart
                     </Button>

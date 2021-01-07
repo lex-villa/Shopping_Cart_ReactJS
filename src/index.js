@@ -9,6 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 import App from './App';
 import productsReducer from './store/reducers/products';
 import orderReducer from './store/reducers/order';
+import cartReducer from './store/reducers/cart';
 import { watchProducts } from './store/sagas/index';
 
 import './index.css';
@@ -19,6 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   products: productsReducer,
   order: orderReducer,
+  cart: cartReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

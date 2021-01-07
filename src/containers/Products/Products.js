@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useReferredState from '../../hooks/useReferredState';
 import { connect } from 'react-redux';
 
@@ -11,35 +11,31 @@ import './Products.css';
 
 const Products = (props) => {
     const { onFetchProducts, onAddPage, products, pageNumber, response } = props;
-
     const [responseRef, setResponseRef] = useReferredState(response)
-    const [productsRef, setProductsRef] = useReferredState(products);
-    const [pageNumberRef, setPageNumberRef] = useReferredState(pageNumber);
+
+    useEffect(() => {
+        setResponseRef(response)
+    }, [response]);
 
     useEffect(() => {
         onFetchProducts(pageNumber);
     }, [onFetchProducts, pageNumber]);
 
-    // console.log("AFUEEEEEEEEEEERA")
-    // console.log("response", response);
-    // console.log("response.currentPage ", response.currentPage);
-    // console.log("response.pages", response.pages);
-    // console.log("response.currentPage === response.pages", response.currentPage === response.pages);
 
-    const handleScroll = (event) => {
+    function handleScroll(event) {
         const { scrollTop, clientHeight, scrollHeight } = event.srcElement.documentElement;
 
         console.log("response", responseRef.current);
         console.log("response.currentPage ", responseRef.current.currentPage);
         console.log("response.pages", responseRef.current.pages);
-        console.log("response.currentPage === response.pages", responseRef.current.currentPage === responseRef.current.pages);
+        console.log("!response.currentPage === response.pages", !(responseRef.current.currentPage === responseRef.current.pages));
 
         if (Math.ceil(scrollHeight - scrollTop) === clientHeight) {
             if (!(responseRef.current.currentPage === responseRef.current.pages)) {
+                console.log("Entro a cambiar pagina")
                 onAddPage();
             };
         };
-
     };
 
     useEffect(() => {

@@ -11,12 +11,22 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_PRODUCT:
             const productToAdd = {
                 ...action.product,
+                id: action.product.id + Math.random(),
             }
             return {
                 ...state,
                 cartProducts: state.cartProducts.concat(productToAdd),
                 totalPrice: state.totalPrice + parseFloat(action.product.price),
                 itemCounter: state.itemCounter + 1,
+            };
+
+        case actionTypes.REMOVE_PRODRUCT:
+            const cartProductsUpdated = state.cartProducts.filter(product => product.id !== action.id) 
+            return {
+                ...state,
+                cartProducts: cartProductsUpdated,
+                totalPrice: state.totalPrice - parseFloat(action.price),
+                itemCounter: state.itemCounter - 1,
             };
 
         default: return state;

@@ -6,3 +6,11 @@ export const addProduct = (prodObj) => {
         product: prodObj,
     };
 };
+
+export const removeProduct = (idProduct, price) => {
+    return {
+        type: actionTypes.REMOVE_PRODRUCT,
+        id: idProduct,
+        price: price,
+    };
+};

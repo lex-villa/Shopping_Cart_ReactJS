@@ -12,7 +12,7 @@ const ProductInCart = (props) => {
                 <img className="Img_ProductItem" src={props.img} alt="product"/>
                 <p className="Name_ProductItem">{props.name}</p>
                 <p className="Price_ProductItem">{props.price}</p>
-                <img className="TrashIcon_ProductItem" src={trashIcon} alt="trash button" />
+                <img className="TrashIcon_ProductItem" src={trashIcon} alt="trash button" onClick={props.productRemoved} />
             </div>
         </div>
     );

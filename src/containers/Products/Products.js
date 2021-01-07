@@ -97,7 +97,7 @@ const Products = (props) => {
                             commentsCounter={product.comments}
                             isBasics={product.basics}
                             rate={product.rate}
-                            productAdded={()=> props.onProductAdded(product)}
+                            productAdded={() => props.onProductAdded(product)}
                         />
                     );
                 })}
@@ -118,7 +118,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onFetchProducts: (pageNumber) => dispatch(actions.fetchProducts(pageNumber)),
         onProductAdded: (productObj) => dispatch(actions.addProduct(productObj)),
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

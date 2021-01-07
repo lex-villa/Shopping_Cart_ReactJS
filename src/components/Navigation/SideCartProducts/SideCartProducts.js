@@ -5,6 +5,7 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 import closeLogo from '../../../assets/close.png';
 import Button from '../../UI/Button/Button';
 import ProductInCart from '../../Product/ProductInCart/ProductInCart';
+import * as actions from '../../../store/actions/index';
 
 import './SideCartProducts.css';
 
@@ -33,7 +34,8 @@ const SideCartProducts = (props) => {
                             <ProductInCart 
                                 img={product.img}
                                 name={product.name}
-                                price={product.price}    
+                                price={product.price}
+                                productRemoved={() => props.onProductRemoved(product.id, product.price)}    
                             />
                         </>
                     );
@@ -54,4 +56,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(SideCartProducts);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onProductRemoved: (idProduct, price) => dispatch(actions.removeProduct(idProduct, price)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideCartProducts);

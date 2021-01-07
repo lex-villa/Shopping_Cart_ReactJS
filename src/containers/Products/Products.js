@@ -15,7 +15,7 @@ const Products = (props) => {
 
     useEffect(() => {
         setResponseRef(response)
-    }, [response]);
+    }, [response, setResponseRef]);
 
     useEffect(() => {
         onFetchProducts(pageNumber);

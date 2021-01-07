@@ -1,4 +1,5 @@
 export {
+    addPage,
     fetchProducts,
     fetchProductsStart,
     fetchProductsSuccess,

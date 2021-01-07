@@ -1,5 +1,11 @@
 import * as actionTypes from './actionTypes';
 
+export const addPage = () => {
+    return {
+        type: actionTypes.ADD_PAGE,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,

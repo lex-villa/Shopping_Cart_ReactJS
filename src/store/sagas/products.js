@@ -14,3 +14,13 @@ export function* fetchProductsSaga(action) {
         yield put(actions.fetchProductsFail(error));
     };
 };
+
+
+// fetch(`http://localhost:8080/products?page=${pageNumber.current}`)
+//             .then(response => {
+//                 return response.json();
+//             })
+//             .then(responseJSON => {
+//                 setResponse(responseJSON)
+//                 setProducts([...products.current, ...responseJSON.products]);
+//             })

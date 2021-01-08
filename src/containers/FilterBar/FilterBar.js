@@ -14,7 +14,7 @@ const FilterBar = (props) => {
             <div className='FilterBarContainer'>
                 <p className='FilterBarTitle'>Filters:</p>
                 <div className='Basics'>
-                    <FilterBasics onFilterBasics={props.onFilterBasics} />
+                    <FilterBasics onFilterBasics={props.onFilterBasics} onFilterBasicsRemoved={props.onFilterBasicsRemoved} />
                 </div>
                 <div className='Prices'>
                     <FilterPrices />
@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onFilterBasics: (filterOption) => dispatch(actions.filterBasics(filterOption)),
+        onFilterBasicsRemoved: () => dispatch(actions.filterBasicsRemoved()),
     };
 };
 

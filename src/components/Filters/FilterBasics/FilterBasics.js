@@ -6,7 +6,11 @@ const FilterBasics = (props) => {
 
     const handleClick = (event) => {
         console.log("se esta ejecutando el click al input")
-        props.onFilterBasics('basics');
+        if (event.target.checked) {
+            props.onFilterBasics('basics');
+        } else {
+            props.onFilterBasicsRemoved();
+        };
     };
 
     return (

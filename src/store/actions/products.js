@@ -13,6 +13,12 @@ export const filterBasics = (filterOption) => {
     };
 };
 
+export const filterBasicsRemoved = () => {
+    return {
+        type: actionTypes.FILTER_BASICS_REMOVED,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,

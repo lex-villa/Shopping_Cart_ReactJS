@@ -39,6 +39,14 @@ const reducer = (state = initialState, action) => {
                 products: [],
             };
 
+        case actionTypes.FILTER_BASICS_REMOVED:
+            return {
+                ...state,
+                filterOption: null,
+                pageNumber: 1,
+                products: [],
+            };
+
         default: return state;
     };
 };

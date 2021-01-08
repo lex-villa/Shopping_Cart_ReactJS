@@ -1,7 +1,8 @@
 export {
     addPage,
     filterBasics,
-    
+    filterBasicsRemoved,
+
     fetchProducts,
     fetchProductsStart,
     fetchProductsSuccess,

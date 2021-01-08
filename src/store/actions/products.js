@@ -1,5 +1,24 @@
 import * as actionTypes from './actionTypes';
 
+export const addPage = () => {
+    return {
+        type: actionTypes.ADD_PAGE,
+    };
+};
+
+export const filterBasics = (filterOption) => {
+    return {
+        type: actionTypes.FILTER_BASICS,
+        filterOption: filterOption,
+    };
+};
+
+export const filterBasicsRemoved = () => {
+    return {
+        type: actionTypes.FILTER_BASICS_REMOVED,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,
@@ -20,9 +39,10 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = (pageNumber) => {
+export const fetchProducts = (pageNumber, filterOption) => {
     return {
         type: actionTypes.FETCH_PRODUCTS,
         pageNumber: pageNumber,
+        filterOption: filterOption,
     };
 };

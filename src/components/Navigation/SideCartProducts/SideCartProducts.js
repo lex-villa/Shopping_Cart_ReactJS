@@ -29,15 +29,14 @@ const SideCartProducts = (props) => {
                     <Button btnType="Details">Proceed to payment</Button>
                 </div>
                 {props.productsInCart.map((product) => {
-                    return(
-                        <>
-                            <ProductInCart 
-                                img={product.img}
-                                name={product.name}
-                                price={product.price}
-                                productRemoved={() => props.onProductRemoved(product.id, product.price)}    
-                            />
-                        </>
+                    return (
+                        <ProductInCart
+                            key={product.id}
+                            img={product.img}
+                            name={product.name}
+                            price={product.price}
+                            productRemoved={() => props.onProductRemoved(product.id, product.price)}
+                        />
                     );
                 })}
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>

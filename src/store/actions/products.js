@@ -19,6 +19,19 @@ export const filterBasicsRemoved = () => {
     };
 };
 
+export const filterSort = (sortOption) => {
+    return {
+        type: actionTypes.FILTER_SORT,
+        sortOption: sortOption,
+    };
+};
+
+export const filterSortRemoved = () => {
+    return {
+        type: actionTypes.FILTER_SORT_REMOVED,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,
@@ -39,10 +52,11 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = (pageNumber, filterOption) => {
+export const fetchProducts = (pageNumber, filterOption, sortOption) => {
     return {
         type: actionTypes.FETCH_PRODUCTS,
         pageNumber: pageNumber,
         filterOption: filterOption,
+        sortOption: sortOption,
     };
 };

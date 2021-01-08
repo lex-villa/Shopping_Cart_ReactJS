@@ -10,7 +10,7 @@ import './Products.css';
 
 
 const Products = (props) => {
-    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption } = props;
+    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption } = props;
     const [responseRef, setResponseRef] = useReferredState(response)
 
     useEffect(() => {
@@ -18,8 +18,8 @@ const Products = (props) => {
     }, [response, setResponseRef]);
 
     useEffect(() => {
-        onFetchProducts(pageNumber, filterOption);
-    }, [onFetchProducts, pageNumber, filterOption]);
+        onFetchProducts(pageNumber, filterOption, sortOption);
+    }, [onFetchProducts, pageNumber, filterOption, sortOption]);
 
 
     function handleScroll(event) {
@@ -78,12 +78,13 @@ const mapStateToProps = (state) => {
         products: state.products.products,
         pageNumber: state.products.pageNumber,
         filterOption: state.products.filterOption,
+        sortOption: state.products.sortOption,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFetchProducts: (pageNumber, filterOption) => dispatch(actions.fetchProducts(pageNumber, filterOption)),
+        onFetchProducts: (pageNumber, filterOption, sortOption) => dispatch(actions.fetchProducts(pageNumber, filterOption, sortOption)),
         onAddPage: () => dispatch(actions.addPage()),
         onProductAdded: (productObj) => dispatch(actions.addProduct(productObj)),
     };

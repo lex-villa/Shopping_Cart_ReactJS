@@ -3,12 +3,23 @@ import { put } from 'redux-saga/effects';
 import * as actions from '../actions/index';
 
 export function* fetchProductsSaga(action) {
-    const filterOption = action.filterOption || "";
+    const filterOption = action.filterOption;
+    const sortOption = action.sortOption;
+
+    let url = `http://localhost:8080/products?page=${action.pageNumber}`
+
+    if(filterOption && sortOption) {
+        url = `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}&sort=${sortOption}`
+
+    } else if(filterOption) {
+        url = `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}`;
+    
+    } else if(sortOption) {
+        url = `http://localhost:8080/products?page=${action.pageNumber}&sort=${sortOption}`;
+    };
 
     try {
-        const response = yield fetch(
-            `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}`
-        );
+        const response = yield fetch(url);
         const responseJSON = yield response.json();
 
 

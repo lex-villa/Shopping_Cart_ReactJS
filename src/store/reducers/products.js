@@ -47,6 +47,22 @@ const reducer = (state = initialState, action) => {
                 products: [],
             };
 
+        case actionTypes.FILTER_SORT:
+            return {
+                ...state,
+                sortOption: action.sortOption,
+                pageNumber: 1,
+                products: [],
+            };
+
+        case actionTypes.FILTER_SORT_REMOVED:
+            return {
+                ...state,
+                sortOption: null,
+                pageNumber: 1,
+                products: [],
+            };
+
         default: return state;
     };
 };

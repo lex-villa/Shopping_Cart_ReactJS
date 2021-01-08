@@ -2,6 +2,8 @@ export {
     addPage,
     filterBasics,
     filterBasicsRemoved,
+    filterSort,
+    filterSortRemoved,
 
     fetchProducts,
     fetchProductsStart,

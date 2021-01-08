@@ -31,10 +31,12 @@ const reducer = (state = initialState, action) => {
                 products: state.products.concat(action.payload.products),
             };
 
-        case 'FILTER':
+        case actionTypes.FILTER_BASICS:
             return {
                 ...state,
-                filterOption: action.filterOption
+                filterOption: action.filterOption,
+                pageNumber: 1,
+                products: [],
             };
 
         default: return state;

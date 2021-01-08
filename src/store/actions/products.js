@@ -6,6 +6,13 @@ export const addPage = () => {
     };
 };
 
+export const filterBasics = (filterOption) => {
+    return {
+        type: actionTypes.FILTER_BASICS,
+        filterOption: filterOption,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,
@@ -26,11 +33,10 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = (pageNumber, filterOption, sortOption) => {
+export const fetchProducts = (pageNumber, filterOption) => {
     return {
         type: actionTypes.FETCH_PRODUCTS,
         pageNumber: pageNumber,
         filterOption: filterOption,
-        sortOption: sortOption,
     };
 };

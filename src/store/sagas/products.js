@@ -3,15 +3,11 @@ import { put } from 'redux-saga/effects';
 import * as actions from '../actions/index';
 
 export function* fetchProductsSaga(action) {
-    const filterOption = action.filterOption;
-    const sortOption = action.sortOption;
+    const filterOption = action.filterOption || "";
 
     try {
         const response = yield fetch(
-            `http://localhost:8080/
-            products?page=${action.pageNumber}
-            &filter=${filterOption}
-            &sort=${sortOption}`
+            `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}`
         );
         const responseJSON = yield response.json();
 

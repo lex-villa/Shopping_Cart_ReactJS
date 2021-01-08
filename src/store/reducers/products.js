@@ -9,6 +9,8 @@ const initialState = {
         prevPage: null,
     },
     pageNumber: 1,
+    filterOption: null,
+    sortOption: null,
     products: []
 };
 
@@ -27,6 +29,12 @@ const reducer = (state = initialState, action) => {
                     ...action.payload,
                 },
                 products: state.products.concat(action.payload.products),
+            };
+
+        case 'FILTER':
+            return {
+                ...state,
+                filterOption: action.filterOption
             };
 
         default: return state;

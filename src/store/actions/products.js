@@ -26,9 +26,11 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = (pageNumber) => {
+export const fetchProducts = (pageNumber, filterOption, sortOption) => {
     return {
         type: actionTypes.FETCH_PRODUCTS,
         pageNumber: pageNumber,
+        filterOption: filterOption,
+        sortOption: sortOption,
     };
 };

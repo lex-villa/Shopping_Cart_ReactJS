@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import useReferredState from '../../hooks/useReferredState';
 import { connect } from 'react-redux';
 
-
 import * as actions from '../../store/actions/index';
 import Product from '../../components/Product/Product';
 
@@ -10,7 +9,7 @@ import './Products.css';
 
 
 const Products = (props) => {
-    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption, isFilterRangePricesOn, filteredProducts, onFilterRangePrices, rangeSelected } = props;
+    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption, isFilterRangePricesOn, filteredProducts, rangeSelected } = props;
     const [responseRef, setResponseRef] = useReferredState(response);
 
     let productsToRender = [];
@@ -26,17 +25,10 @@ const Products = (props) => {
     }, [response, setResponseRef]);
 
     useEffect(() => {
-        onFetchProducts(pageNumber, filterOption, sortOption);
+        onFetchProducts(pageNumber, filterOption, sortOption, isFilterRangePricesOn, rangeSelected);
 
 
     }, [onFetchProducts, pageNumber, filterOption, sortOption]);
-
-    //This part pretends to filter for range prices when a change of page is done if that filter is active 
-    useEffect(() => {
-        if (isFilterRangePricesOn) {
-            onFilterRangePrices(rangeSelected);
-        };
-    }, [pageNumber]);
 
 
     function handleScroll(event) {
@@ -104,10 +96,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFetchProducts: (pageNumber, filterOption, sortOption) => dispatch(actions.fetchProducts(pageNumber, filterOption, sortOption)),
+        onFetchProducts: (pageNumber, filterOption, sortOption, isFilterRangePricesOn, rangeSelected) => dispatch(actions.fetchProducts(pageNumber, filterOption, sortOption, isFilterRangePricesOn, rangeSelected)),
         onAddPage: () => dispatch(actions.addPage()),
         onProductAdded: (productObj) => dispatch(actions.addProduct(productObj)),
-        onFilterRangePrices: (range) => dispatch(actions.filterRangePrices(range)),
     };
 };
 

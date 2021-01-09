@@ -8,13 +8,13 @@ export function* fetchProductsSaga(action) {
 
     let url = `http://localhost:8080/products?page=${action.pageNumber}`
 
-    if(filterOption && sortOption) {
+    if (filterOption && sortOption) {
         url = `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}&sort=${sortOption}`
 
-    } else if(filterOption) {
+    } else if (filterOption) {
         url = `http://localhost:8080/products?page=${action.pageNumber}&filter=${filterOption}`;
-    
-    } else if(sortOption) {
+
+    } else if (sortOption) {
         url = `http://localhost:8080/products?page=${action.pageNumber}&sort=${sortOption}`;
     };
 
@@ -22,8 +22,11 @@ export function* fetchProductsSaga(action) {
         const response = yield fetch(url);
         const responseJSON = yield response.json();
 
-
         yield put(actions.fetchProductsSuccess(responseJSON))
+
+        if (action.isFilterRangePricesOn) {
+            yield put(actions.filterRangePrices(action.rangeSelected));
+        };
 
     } catch (error) {
         yield put(actions.fetchProductsFail(error));

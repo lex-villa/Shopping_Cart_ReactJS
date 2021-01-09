@@ -59,11 +59,14 @@ export const fetchProductsFail = (error) => {
     };
 };
 
-export const fetchProducts = (pageNumber, filterOption, sortOption) => {
+
+export const fetchProducts = (pageNumber, filterOption, sortOption, isFilterRangePricesOn, rangeSelected) => {
     return {
         type: actionTypes.FETCH_PRODUCTS,
         pageNumber: pageNumber,
         filterOption: filterOption,
         sortOption: sortOption,
+        isFilterRangePricesOn: isFilterRangePricesOn,
+        rangeSelected: rangeSelected,
     };
 };

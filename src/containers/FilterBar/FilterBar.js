@@ -20,7 +20,9 @@ const FilterBar = (props) => {
                     />
                 </div>
                 <div className='Prices'>
-                    <FilterPrices />
+                    <FilterPrices 
+                        onFilterRangePrices={props.onFilterRangePrices}
+                    />
                 </div>
                 <div className='SortBy'>
                     <FilterSortBy
@@ -46,6 +48,7 @@ const mapDispatchToProps = (dispatch) => {
         onFilterBasicsRemoved: () => dispatch(actions.filterBasicsRemoved()),
         onFilterSort: (filterOption) => dispatch(actions.filterSort(filterOption)),
         onFilterSortRemoved: () => dispatch(actions.filterSortRemoved()),
+        onFilterRangePrices: (rangeOption) => dispatch(actions.filterRangePrices(rangeOption)),
     };
 };
 

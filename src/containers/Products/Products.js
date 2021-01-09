@@ -10,8 +10,16 @@ import './Products.css';
 
 
 const Products = (props) => {
-    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption } = props;
-    const [responseRef, setResponseRef] = useReferredState(response)
+    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption, isFilterRangePricesOn, filteredProducts, onFilterRangePrices, rangeSelected } = props;
+    const [responseRef, setResponseRef] = useReferredState(response);
+
+    let productsToRender = [];
+
+    if (isFilterRangePricesOn) {
+        productsToRender = filteredProducts;
+    } else {
+        productsToRender = products;
+    }
 
     useEffect(() => {
         setResponseRef(response)
@@ -19,7 +27,16 @@ const Products = (props) => {
 
     useEffect(() => {
         onFetchProducts(pageNumber, filterOption, sortOption);
+
+
     }, [onFetchProducts, pageNumber, filterOption, sortOption]);
+
+    //This part pretends to filter for range prices when a change of page is done if that filter is active 
+    useEffect(() => {
+        if (isFilterRangePricesOn) {
+            onFilterRangePrices(rangeSelected);
+        };
+    }, [pageNumber]);
 
 
     function handleScroll(event) {
@@ -52,7 +69,7 @@ const Products = (props) => {
         <div className='GridContainer'>
             <h2 className='ProductsSectionTitle'>Our products:</h2>
             <div className='ProductsGridContainer' onScroll={handleScroll}>
-                {products.map((product) => {
+                {productsToRender.map((product) => {
                     return (
                         <Product
                             key={product.id}
@@ -79,6 +96,9 @@ const mapStateToProps = (state) => {
         pageNumber: state.products.pageNumber,
         filterOption: state.products.filterOption,
         sortOption: state.products.sortOption,
+        isFilterRangePricesOn: state.products.isFilterRangePricesOn,
+        filteredProducts: state.products.filteredProducts,
+        rangeSelected: state.products.rangeSelected,
     };
 };
 
@@ -87,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
         onFetchProducts: (pageNumber, filterOption, sortOption) => dispatch(actions.fetchProducts(pageNumber, filterOption, sortOption)),
         onAddPage: () => dispatch(actions.addPage()),
         onProductAdded: (productObj) => dispatch(actions.addProduct(productObj)),
+        onFilterRangePrices: (range) => dispatch(actions.filterRangePrices(range)),
     };
 };
 

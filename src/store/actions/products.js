@@ -32,6 +32,13 @@ export const filterSortRemoved = () => {
     };
 };
 
+export const filterRangePrices = (range) => {
+    return {
+        type: actionTypes.FILTER_RANGE_PRICES,
+        range: range,
+    };
+};
+
 export const fetchProductsStart = () => {
     return {
         type: actionTypes.FETCH_PRODUCTS_START,

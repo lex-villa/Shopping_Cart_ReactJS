@@ -11,7 +11,10 @@ const initialState = {
     pageNumber: 1,
     filterOption: null,
     sortOption: null,
-    products: []
+    products: [],
+    filteredProducts: [],
+    isFilterRangePricesOn: false,
+    rangeSelected: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +64,31 @@ const reducer = (state = initialState, action) => {
                 sortOption: null,
                 pageNumber: 1,
                 products: [],
+            };
+
+        case actionTypes.FILTER_RANGE_PRICES:
+            let filterProducts = [];
+            if (action.range === 'first_range') {
+                filterProducts = state.products.filter((product) => {
+                    return +product.price >= 1 && +product.price <= 50;
+                });
+            } else if (action.range === 'second_range') {
+                filterProducts = state.products.filter((product) => {
+                    return +product.price >= 51 && +product.price <= 100;
+                });
+            } else if (action.range === 'third_range') {
+                filterProducts = state.products.filter((product) => {
+                    return +product.price >= 101 && +product.price <= 200;
+                });
+            } else {
+                console.log('This text should not be displayed')
+            }
+
+            return {
+                ...state,
+                filteredProducts: filterProducts,
+                isFilterRangePricesOn: true,
+                rangeSelected: action.range,
             };
 
         default: return state;

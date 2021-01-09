@@ -4,6 +4,7 @@ export {
     filterBasicsRemoved,
     filterSort,
     filterSortRemoved,
+    filterRangePrices,
 
     fetchProducts,
     fetchProductsStart,

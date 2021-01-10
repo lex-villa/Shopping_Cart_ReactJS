@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import HeaderBar from './containers/HeaderBar/HeaderBar';
 import Products from './containers/Products/Products';
 import FilterBar from './containers/FilterBar/FilterBar';
 import SideCartProducts from './components/Navigation/SideCartProducts/SideCartProducts';
+import DetailProduct from './containers/DetailProduct/DetailProduct';
 
 import './App.css';
 
@@ -22,9 +23,12 @@ function App() {
     <div>
       <HeaderBar clicked={drawerToggleClicked} />
       <SideCartProducts closed={sideDrawerClosedHandler} open={showSideDrawer} />
-      <main className='MainSection'>
+      <main>
+        {/* <div className='MainSection'>
           <FilterBar />
           <Products />
+        </div> */}
+        <DetailProduct/>
       </main>
     </div>
   );

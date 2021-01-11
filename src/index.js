@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import productsReducer from './store/reducers/products';
@@ -35,7 +36,9 @@ sagaMiddleware.run(watchProducts);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import HeaderBar from './containers/HeaderBar/HeaderBar';
-import Products from './containers/Products/Products';
-import FilterBar from './containers/FilterBar/FilterBar';
 import SideCartProducts from './components/Navigation/SideCartProducts/SideCartProducts';
 import DetailProduct from './containers/DetailProduct/DetailProduct';
+import LayoutProducts from './containers/LayoutProducts/LayoutProducts';
 
 import './App.css';
 
@@ -24,11 +24,10 @@ function App() {
       <HeaderBar clicked={drawerToggleClicked} />
       <SideCartProducts closed={sideDrawerClosedHandler} open={showSideDrawer} />
       <main>
-        {/* <div className='MainSection'>
-          <FilterBar />
-          <Products />
-        </div> */}
-        <DetailProduct/>
+        <Switch>
+          <Route path='/ProductDetail' component={DetailProduct} />
+          <Route path='/' component={LayoutProducts} />
+        </Switch>
       </main>
     </div>
   );

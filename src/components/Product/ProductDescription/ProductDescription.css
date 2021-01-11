@@ -1,5 +1,4 @@
 .ProductDescriptionContainer {
-    border: 2px solid green;
     display: flex;
     height: fit-content;
     width: 75%;
@@ -7,7 +6,6 @@
 }
 
 .ImgContainer_ForDetails {
-    border: 2px solid blue;
     width: 50%;
     display: flex;
     align-content: center;
@@ -15,13 +13,11 @@
 }
 
 .ImgContainer_ForDetails img {
-    border: 2px solid red;
     width: 250px;
     height: 335px;
 }
 
 .Details_ForDetails {
-    border: 2px solid purple;
     display: flex;
     flex-direction: column;
     width: 50%;

@@ -9,7 +9,6 @@
     background-color: white;
     transition: transform 0.3s ease-out;
     overflow: scroll;
-    border: 3px solid purple;
 }
 
 .Open {

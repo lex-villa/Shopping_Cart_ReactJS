@@ -5,6 +5,7 @@ var cors = require('cors');
 
 const axios = require('axios');
 const mockProducts = require('./mock-products');
+const mockDetail = require('./mock-detail');
 
 app.use(cors());
 
@@ -44,6 +45,22 @@ app.get('/products', (req, res) => {
     .catch(err => {
       console.log(err);
       res.json({message: 'CANNOT_RETURN_ELEMENTS'})
+    });
+});
+
+app.get('/products/:productId', (req, res) => {
+  axios
+    .get('https://picsum.photos/v2/list')
+    .then((results) => {
+      let result = mockDetail;
+      const imgData = results.data;
+      const productId = parseInt(req.params.productId);
+      result = result.find((product) => product.id === productId);
+      res.json({ ...result, img: imgData[productId - 1].download_url });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ message: 'CANNOT_RETURN_PRODUCT_DETAIL' });
     });
 });
 

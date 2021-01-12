@@ -7,14 +7,16 @@ import Button from '../../UI/Button/Button';
 
 import './ProductDescription.css';
 
-const ProductDescription = () => {
+const ProductDescription = (props) => {
+    const { name, description, rate, price, img } = props;
+
     return (
         <div className='ProductDescriptionContainer'>
             <div className='ImgContainer_ForDetails'>
-                <img src={cheems} alt='products' />
+                <img src={img} alt='products' />
             </div>
             <div className="Details_ForDetails">
-                <p className='ProductName_ForDetails'>Coffe Maker</p>
+                <p className='ProductName_ForDetails'>{name}</p>
                 <div className='RateSection_ForDetails'>
                     <div className='StarsRate_ForDetails'>
                         <img src={starRate} alt='star-rate' />
@@ -28,11 +30,11 @@ const ProductDescription = () => {
                     </div>
                 </div>
                 <div className='PricingContainer_ForDetails'>
-                    <p className='Price_ForDetails'>$105</p>
+                    <p className='Price_ForDetails'>${price}</p>
                     <p className='BasicLabel_ForDetails'>Basic</p>
                 </div>
                 <div className='Description_ForDetails'>
-                    <p>Descripcion vrgas</p>
+                    <p>{description}</p>
                 </div>
                 <p className='SeeMore'>See more.</p>
                 <div className='Btn_ForDetails'>

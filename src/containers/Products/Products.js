@@ -26,8 +26,6 @@ const Products = (props) => {
 
     useEffect(() => {
         onFetchProducts(pageNumber, filterOption, sortOption, isFilterRangePricesOn, rangeSelected);
-
-
     }, [onFetchProducts, pageNumber, filterOption, sortOption]);
 
 
@@ -38,6 +36,10 @@ const Products = (props) => {
         console.log("response.currentPage ", responseRef.current.currentPage);
         console.log("response.pages", responseRef.current.pages);
         console.log("!response.currentPage === response.pages", !(responseRef.current.currentPage === responseRef.current.pages));
+
+        console.log('[scrollHeight - scrollTop]', Math.ceil(scrollHeight - scrollTop))
+        console.log('[clientHeight]', clientHeight)
+        console.log('[respuesta]', Math.ceil(scrollHeight - scrollTop) === clientHeight)
 
         if (Math.ceil(scrollHeight - scrollTop) === clientHeight) {
             if (!(responseRef.current.currentPage === responseRef.current.pages)) {

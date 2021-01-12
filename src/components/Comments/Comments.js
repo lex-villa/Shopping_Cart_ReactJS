@@ -8,7 +8,7 @@ const Comments = (props) => {
     const { comments } = props;
 
     let commentsToRender = [];
-    if(comments) {
+    if (comments) {
         commentsToRender = comments;
     }
 
@@ -16,9 +16,10 @@ const Comments = (props) => {
         <div className='CommentsConatiner'>
             <p className='Title_For_CommentsConatiner'>Comments:</p>
             <div className='CommentContainer_ForCommentsConatiner'>
-                {commentsToRender.map((comment) => {
+                {commentsToRender.map((comment, index) => {
                     return (
-                        <Comment 
+                        <Comment
+                            key={index}
                             user={comment.user}
                             comment={comment.comment}
                         />

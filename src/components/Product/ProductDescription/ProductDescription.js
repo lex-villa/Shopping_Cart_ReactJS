@@ -40,7 +40,7 @@ const ProductDescription = (props) => {
                 <div className='Btn_ForDetails'>
                     <Button
                         btnType='AddToCart'
-                    // clicked={props.productAdded}
+                        clicked={props.productAdded}
                     >
                         Add to cart
                 </Button>

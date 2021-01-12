@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import ProductDescription from '../../components/Product/ProductDescription/ProductDescription';
 import Comments from '../../components/Comments/Comments';
+import * as actions from '../../store/actions/index';
 
 import './DetailsProduct.css';
 
-const DetailProduct = () => {
+const DetailProduct = (props) => {
     const { productId } = useParams()
     const [response, setResponse] = useState({})
 
@@ -31,6 +33,7 @@ const DetailProduct = () => {
                 rate={response.rate}
                 price={response.price}
                 img={response.img}
+                productAdded={() => props.onAddProduct(response)}
             />
             <div className='CommentContainer_ForDetailProduct'>
                 <Comments 
@@ -41,4 +44,10 @@ const DetailProduct = () => {
     );
 };
 
-export default DetailProduct;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddProduct: (prodObj) => dispatch(actions.addProduct(prodObj)),
+    }
+};
+
+export default connect(null, mapDispatchToProps)(DetailProduct);

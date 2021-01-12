@@ -25,7 +25,7 @@ function App() {
       <SideCartProducts closed={sideDrawerClosedHandler} open={showSideDrawer} />
       <main>
         <Switch>
-          <Route path='/ProductDetail' component={DetailProduct} />
+          <Route path='/ProductDetail/:productId' component={DetailProduct} />
           <Route path='/' component={LayoutProducts} />
         </Switch>
       </main>

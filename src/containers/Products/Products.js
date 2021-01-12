@@ -65,6 +65,7 @@ const Products = (props) => {
                     return (
                         <Product
                             key={product.id}
+                            id={product.id}
                             name={product.name}
                             price={product.price}
                             imgURL={product.img}

@@ -1,0 +1,39 @@
+.CreditCardData_Container {
+    border: 2px solid black;
+    width: fit-content;
+}
+
+.TitleForm_CreditCardData {
+    font-size: 16px;
+}
+
+.FormContainer_CreditCardData {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.Row_CreditCardData {
+    display: flex;
+    margin-top: 10px;
+}
+
+.InputGroup_CreditCardData {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    width: 250px;
+}
+
+.Row_CreditCardData:nth-child(2) .InputGroup_CreditCardData:nth-child(1) {
+    width: 100%;
+}
+
+.InputGroup_CreditCardData p {
+    font-size: 16px;
+}
+
+.InputGroup_CreditCardData input {
+    height: 34px;
+    border: 1px solid black;
+}

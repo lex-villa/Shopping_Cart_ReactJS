@@ -1,0 +1,35 @@
+.ShippingDataContainer {
+    border: 2px solid black;
+    width: fit-content;
+}
+
+.TitleForm_ShippingData {
+    font-size: 16px;
+}
+
+.FormContainer_ShippingData {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.Row_ShippingData{
+    display: flex;
+    margin-top: 10px;
+}
+
+.InputGroup_ShippingData {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    width: 250px;
+}
+
+.InputGroup_ShippingData p {
+    font-size: 16px;
+}
+
+.InputGroup_ShippingData input {
+    height: 34px;
+    border: 1px solid black;
+}

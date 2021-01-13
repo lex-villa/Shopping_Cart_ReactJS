@@ -6,8 +6,10 @@ var cors = require('cors');
 const axios = require('axios');
 const mockProducts = require('./mock-products');
 const mockDetail = require('./mock-detail');
+const bodyParser = require('body-parser');
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/products', (req, res) => {
   axios.get('https://picsum.photos/v2/list')

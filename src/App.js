@@ -5,6 +5,7 @@ import HeaderBar from './containers/HeaderBar/HeaderBar';
 import SideCartProducts from './components/Navigation/SideCartProducts/SideCartProducts';
 import DetailProduct from './containers/DetailProduct/DetailProduct';
 import LayoutProducts from './containers/LayoutProducts/LayoutProducts';
+import Payment from './containers/Payment/Payment';
 
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
       <main>
         <Switch>
           <Route path='/ProductDetail/:productId' component={DetailProduct} />
+          <Route path='/Payment' component={Payment} />
           <Route path='/' component={LayoutProducts} />
         </Switch>
       </main>

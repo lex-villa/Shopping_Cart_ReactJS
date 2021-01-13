@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import Logo from '../../components/Navigation/Logo/Logo';
 import ShoppingCartLogo from '../../components/Navigation/ShoppingCartLogo/ShoppingCartLogo';
@@ -7,13 +8,18 @@ import ShoppingCartLogo from '../../components/Navigation/ShoppingCartLogo/Shopp
 import './HeaderBar.css';
 
 const HeaderBar = (props) => {
+    const location = useLocation();
+
+    console.log(location)
+
     return (
         <header className='HeaderBar'>
             <div className='LogoGlobantContainer'>
                 <Logo />
             </div>
             <div className='LogoShoppingCartContainer'>
-                <ShoppingCartLogo clicked={props.clicked} itemCounter={props.itemCounter} />
+                {location.pathname !== '/Payment' ? <ShoppingCartLogo clicked={props.clicked} itemCounter={props.itemCounter} /> : null}
+
             </div>
         </header>
     )

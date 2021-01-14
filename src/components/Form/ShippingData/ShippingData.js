@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './ShippingData.css'
 
 const ShippingData = () => {
+    const [ziCodeQuery, setZipCodeQuery] = useState("");
 
-    const inputValidation = () => {
-        //esto sera asignado al onchange de los input
+    const ziCodeValidation = (zcQuery) => {
+        fetch(`http://localhost:8080/validate/zipcode/${zcQuery}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(responseJson => {
+                console.log('soy la respuesta de la validacion')
+                console.log(responseJson)
+            })
     };
+
+
+    useEffect(() => {
+        const timeOutId = setTimeout(() => ziCodeValidation(ziCodeQuery), 1500);
+
+        return () => clearTimeout(timeOutId);
+    }, [ziCodeQuery])
+
 
     return (
         <div className='ShippingDataContainer'>
@@ -42,7 +63,7 @@ const ShippingData = () => {
                     </div>
                     <div className='InputGroup_ShippingData'>
                         <label>Zip Code</label>
-                        <input type='text' />
+                        <input type='text' value={ziCodeQuery} onChange={(e) => setZipCodeQuery(e.target.value)} />
                     </div>
                 </div>
 
@@ -53,7 +74,7 @@ const ShippingData = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };

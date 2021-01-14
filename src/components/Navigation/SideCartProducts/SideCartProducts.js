@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import closeLogo from '../../../assets/close.png';
@@ -10,11 +11,17 @@ import * as actions from '../../../store/actions/index';
 import './SideCartProducts.css';
 
 const SideCartProducts = (props) => {
+    const history = useHistory();
 
     let attachedClasses = ['SideDrawer', 'Close'];
     if (props.open) {
         attachedClasses = ['SideDrawer', 'Open'];
     }
+
+    const handleClick = () => {
+        props.closed();
+        history.push('/Payment')
+    };
 
     return (
         <>
@@ -26,7 +33,7 @@ const SideCartProducts = (props) => {
                 </div>
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
-                    <Button btnType="Details">Proceed to payment</Button>
+                    <Button btnType="Details" clicked={handleClick}>Proceed to payment</Button>
                 </div>
                 <div className='ProductInCart_SideCartProducts'>
                 {props.productsInCart.map((product) => {
@@ -43,7 +50,7 @@ const SideCartProducts = (props) => {
                 </div>
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
-                    <Button btnType="Details">Proceed to payment</Button>
+                    <Button btnType="Details" clicked={handleClick}>Proceed to payment</Button>
                 </div>
             </div>
         </>

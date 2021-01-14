@@ -7,10 +7,12 @@ import './PaymentForm.css';
 
 const PaymentForm = () => {
     return (
-        <>
+        <div className='PaymentFormContainer'>
             <ShippingData />
-            <CreditCardData/>
-        </>
+            <div className='CreditContainer'>
+                <CreditCardData />
+            </div>
+        </div>
     )
 };
 

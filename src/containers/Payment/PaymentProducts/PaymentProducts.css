@@ -1,0 +1,17 @@
+.PaymentProductsContainer {
+    width: 380px;
+}
+
+.btnProceedPayment_PaymentProducts {
+    margin-top: 50px;
+}
+
+.Subtotal_PaymentProducts {
+    margin-top: 70px;
+}
+
+.Subtotal_PaymentProducts span {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}

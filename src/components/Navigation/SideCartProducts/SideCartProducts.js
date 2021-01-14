@@ -28,6 +28,7 @@ const SideCartProducts = (props) => {
                 <div className="btnProceedPayment">
                     <Button btnType="Details">Proceed to payment</Button>
                 </div>
+                <div className='ProductInCart_SideCartProducts'>
                 {props.productsInCart.map((product) => {
                     return (
                         <ProductInCart
@@ -39,6 +40,7 @@ const SideCartProducts = (props) => {
                         />
                     );
                 })}
+                </div>
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
                     <Button btnType="Details">Proceed to payment</Button>

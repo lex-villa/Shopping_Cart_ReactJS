@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import PaymentForm from './PaymentForm/PaymentForm';
 import PaymentProducts from './PaymentProducts/PaymentProducts';
+import * as actions from '../../store/actions/index';
 
 import './Payment.css';
 
@@ -16,6 +17,7 @@ const Payment = (props) => {
                 <PaymentProducts 
                     productsInCart={props.productsInCart}
                     totalPrice={props.totalPrice}
+                    onProductRemoved={props.onProductRemoved}
                 />
             </div>
         </div>
@@ -29,4 +31,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Payment);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onProductRemoved: (idProduct, price) => dispatch(actions.removeProduct(idProduct, price)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);

@@ -3,7 +3,6 @@ import React from 'react';
 import ProductInCart from '../../../components/Product/ProductInCart/ProductInCart';
 import Button from '../../../components/UI/Button/Button';
 
-import cheems from '../../../assets/cheems.jpg'
 
 import './PaymentProducts.css';
 

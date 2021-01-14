@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -11,7 +11,19 @@ import * as actions from '../../../store/actions/index';
 import './SideCartProducts.css';
 
 const SideCartProducts = (props) => {
+    const { productsInCart, itemCounter } = props;
+
+    const [btnDisabled, setBtnDisabled] = useState(true);
+
     const history = useHistory();
+
+
+    useEffect(() => {
+        if (itemCounter > 0) {
+            setBtnDisabled(false);
+        };
+    }, [itemCounter])
+
 
     let attachedClasses = ['SideDrawer', 'Close'];
     if (props.open) {
@@ -33,24 +45,24 @@ const SideCartProducts = (props) => {
                 </div>
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
-                    <Button btnType="Details" clicked={handleClick}>Proceed to payment</Button>
+                    <Button btnType="Details" clicked={handleClick} disabled={btnDisabled}>Proceed to payment</Button>
                 </div>
                 <div className='ProductInCart_SideCartProducts'>
-                {props.productsInCart.map((product) => {
-                    return (
-                        <ProductInCart
-                            key={product.id}
-                            img={product.img}
-                            name={product.name}
-                            price={product.price}
-                            productRemoved={() => props.onProductRemoved(product.id, product.price)}
-                        />
-                    );
-                })}
+                    {productsInCart.map((product) => {
+                        return (
+                            <ProductInCart
+                                key={product.id}
+                                img={product.img}
+                                name={product.name}
+                                price={product.price}
+                                productRemoved={() => props.onProductRemoved(product.id, product.price)}
+                            />
+                        );
+                    })}
                 </div>
                 <p className="Subtotal">Subtotal: <span>${props.totalPrice}</span></p>
                 <div className="btnProceedPayment">
-                    <Button btnType="Details" clicked={handleClick}>Proceed to payment</Button>
+                    <Button btnType="Details" clicked={handleClick} disabled={btnDisabled}>Proceed to payment</Button>
                 </div>
             </div>
         </>
@@ -61,6 +73,7 @@ const mapStateToProps = (state) => {
     return {
         productsInCart: state.cart.cartProducts,
         totalPrice: state.cart.totalPrice,
+        itemCounter: state.cart.itemCounter,
     };
 };
 

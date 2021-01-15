@@ -19,6 +19,8 @@ export function* fetchProductsSaga(action) {
     };
 
     try {
+        yield put(actions.fetchProductsStart());
+
         const response = yield fetch(url);
         const responseJSON = yield response.json();
 

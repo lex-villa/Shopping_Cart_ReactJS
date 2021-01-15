@@ -15,6 +15,7 @@ const initialState = {
     filteredProducts: [],
     isFilterRangePricesOn: false,
     rangeSelected: null,
+    loading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,12 @@ const reducer = (state = initialState, action) => {
                 pageNumber: state.pageNumber + 1,
             };
 
+        case actionTypes.FETCH_PRODUCTS_START:
+            return {
+                ...state,
+                loading: true,
+            };
+
         case actionTypes.FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
@@ -32,6 +39,7 @@ const reducer = (state = initialState, action) => {
                     ...action.payload,
                 },
                 products: state.products.concat(action.payload.products),
+                loading: false,
             };
 
         case actionTypes.FILTER_BASICS:

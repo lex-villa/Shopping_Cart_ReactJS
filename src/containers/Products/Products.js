@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import Product from '../../components/Product/Product';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 import './Products.css';
 
 
 const Products = (props) => {
-    const { onFetchProducts, onAddPage, products, pageNumber, response, filterOption, sortOption, isFilterRangePricesOn, filteredProducts, rangeSelected } = props;
+    const { onFetchProducts, onAddPage, products, pageNumber, response,
+        filterOption, sortOption, isFilterRangePricesOn, filteredProducts,
+        rangeSelected, loading } = props;
+
     const [responseRef, setResponseRef] = useReferredState(response);
 
     let productsToRender = [];
@@ -59,26 +63,35 @@ const Products = (props) => {
     }, [])
 
 
+    let renderedProducts = [];
+
+    renderedProducts = (
+        <div className='ProductsGridContainer' onScroll={handleScroll}>
+            {productsToRender.map((product) => {
+                return (
+
+                    <Product
+                        key={product.id}
+                        id={product.id}
+                        name={product.name}
+                        price={product.price}
+                        imgURL={product.img}
+                        commentsCounter={product.comments}
+                        isBasics={product.basics}
+                        rate={product.rate}
+                        productAdded={() => props.onProductAdded(product)}
+                    />
+
+                );
+            })}
+        </div>
+    );
+
     return (
         <div className='GridContainer'>
             <h2 className='ProductsSectionTitle'>Our products:</h2>
-            <div className='ProductsGridContainer' onScroll={handleScroll}>
-                {productsToRender.map((product) => {
-                    return (
-                        <Product
-                            key={product.id}
-                            id={product.id}
-                            name={product.name}
-                            price={product.price}
-                            imgURL={product.img}
-                            commentsCounter={product.comments}
-                            isBasics={product.basics}
-                            rate={product.rate}
-                            productAdded={() => props.onProductAdded(product)}
-                        />
-                    );
-                })}
-            </div>
+            {renderedProducts}
+            {loading ?  <Spinner /> : null}
         </div>
     );
 };
@@ -94,6 +107,7 @@ const mapStateToProps = (state) => {
         isFilterRangePricesOn: state.products.isFilterRangePricesOn,
         filteredProducts: state.products.filteredProducts,
         rangeSelected: state.products.rangeSelected,
+        loading: state.products.loading,
     };
 };
 

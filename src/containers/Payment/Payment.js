@@ -10,6 +10,13 @@ import './Payment.css';
 const Payment = (props) => {
     const [formIsValid, setFormIsValid] = useState(false);
     const [btnDisabled, setBtnDisabled] = useState(true);
+    const [orderData, setOrderData] = useState({});
+
+    const handlePurchaseClick = () => {
+        if(formIsValid) {
+            props.onPurchaseProducts(orderData);
+        };
+    };
 
     return (
         <div className='PaymentSection_Container'>
@@ -17,6 +24,7 @@ const Payment = (props) => {
                 <PaymentForm
                     setFormIsValid={setFormIsValid}
                     setBtnDisabled={setBtnDisabled}
+                    setOrderData={setOrderData}
                 />
             </div>
             <div>
@@ -25,6 +33,7 @@ const Payment = (props) => {
                     totalPrice={props.totalPrice}
                     onProductRemoved={props.onProductRemoved}
                     btnDisabled={btnDisabled}
+                    handlePurchaseClick={handlePurchaseClick}
                 />
             </div>
         </div>
@@ -41,6 +50,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onProductRemoved: (idProduct, price) => dispatch(actions.removeProduct(idProduct, price)),
+        onPurchaseProducts: (orderData) => dispatch(actions.purchaseProducts(orderData)),
     };
 };
 

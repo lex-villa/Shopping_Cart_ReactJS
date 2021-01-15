@@ -3,9 +3,15 @@ import React, { useState, useEffect } from 'react';
 import './ShippingData.css'
 
 const ShippingData = (props) => {
-    const { setShippingDataFormIsValid } = props;
+    const { setShippingDataFormIsValid, setShippingData } = props;
 
     const [ziCodeQuery, setZipCodeQuery] = useState("");
+    const [name, setName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [adress, setAdress] = useState(null);
+    const [city, setCity] = useState(null);
+    const [stateValue, setStateValue] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
 
     const [inputName, setInputName] = useState(false);
     const [inputLastName, setInputLastName] = useState(false);
@@ -46,6 +52,14 @@ const ShippingData = (props) => {
             console.log(inputName, inputLastName, inputAdress, inputCity, inputState, inputPhoneNumber, inputZipCode)
             if (inputName && inputLastName && inputAdress && inputCity && inputState && inputPhoneNumber && inputZipCode) {
                 setShippingDataFormIsValid(true);
+                setShippingData({
+                    address: adress,
+                    city: city,
+                    state: stateValue,
+                    phoneNumber: phoneNumber,
+                    fullName: `${name} ${lastName}`,
+                    zipCode: ziCodeQuery,
+                });
             } else {
                 setShippingDataFormIsValid(false);
             };
@@ -58,6 +72,7 @@ const ShippingData = (props) => {
         const value = event.target.value;
 
         if (name === 'Name') {
+            setName(value);
             if (value.length > 0) {
                 setInputName(true);
             } else {
@@ -66,6 +81,7 @@ const ShippingData = (props) => {
         };
 
         if (name === 'LastName') {
+            setLastName(value);
             if (value.length > 0) {
                 setInputLastName(true);
             } else {
@@ -74,6 +90,7 @@ const ShippingData = (props) => {
         };
 
         if (name === 'Adress') {
+            setAdress(value);
             if (value.length > 0) {
                 setInputAdress(true);
             } else {
@@ -82,6 +99,7 @@ const ShippingData = (props) => {
         };
 
         if (name === 'City') {
+            setCity(value);
             if (value.length > 0) {
                 setInputCity(true);
             } else {
@@ -90,6 +108,7 @@ const ShippingData = (props) => {
         };
 
         if (name === 'State') {
+            setStateValue(value);
             if (value.length > 0) {
                 setInputState(true);
             } else {
@@ -98,6 +117,7 @@ const ShippingData = (props) => {
         };
 
         if (name === 'PhoneNumber') {
+            setPhoneNumber(value);
             if (value.length > 0) {
                 setInputPhoneNumber(true);
             } else {
@@ -114,29 +134,29 @@ const ShippingData = (props) => {
                 <div className='Row_ShippingData'>
                     <div className='InputGroup_ShippingData'>
                         <label>Name</label>
-                        <input type='text' name='Name' onChange={handleChange} />
+                        <input type='text' name='Name' value={name} onChange={handleChange} />
                     </div>
                     <div className='InputGroup_ShippingData'>
                         <label>Last Name</label>
-                        <input type='text' name='LastName' onChange={handleChange} />
+                        <input type='text' name='LastName' value={lastName} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className='Row_ShippingData'>
                     <div className='InputGroup_ShippingData'>
                         <label>Adress</label>
-                        <input type='text' name='Adress' onChange={handleChange} />
+                        <input type='text' name='Adress' value={adress} onChange={handleChange} />
                     </div>
                     <div className='InputGroup_ShippingData'>
                         <label>City</label>
-                        <input type='text' name='City' onChange={handleChange} />
+                        <input type='text' name='City' value={city} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className='Row_ShippingData'>
                     <div className='InputGroup_ShippingData'>
                         <label>State</label>
-                        <input type='text' name='State' onChange={handleChange} />
+                        <input type='text' name='State' value={stateValue} onChange={handleChange} />
                     </div>
                     <div className='InputGroup_ShippingData'>
                         <label>Zip Code</label>
@@ -147,7 +167,7 @@ const ShippingData = (props) => {
                 <div className='Row_ShippingData'>
                     <div className='InputGroup_ShippingData'>
                         <label>Phone Number</label>
-                        <input type='text' name='PhoneNumber' onChange={handleChange} />
+                        <input type='text' name='PhoneNumber' value={phoneNumber} onChange={handleChange} />
                     </div>
                 </div>
             </div>

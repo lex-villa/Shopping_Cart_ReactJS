@@ -4,9 +4,12 @@ import './CreditCardData.css';
 
 
 const CreditCardData = (props) => {
-    const { setCreditCardDataFormIsValid } = props;
+    const { setCreditCardDataFormIsValid, setCreditCardData } = props;
 
     const [creditCardQuery, setCreditCardQuery] = useState("");
+    const [name, setName] = useState(null);
+    const [expDate, setExpDate] = useState(null);
+    const [cvv, setCvv] = useState(null);
 
     const [inputName, setInputName] = useState(false);
     const [inputExpDate, setInputExpDate] = useState(false);
@@ -43,6 +46,12 @@ const CreditCardData = (props) => {
         const checkValidityCreditCardDataForm = () => {
             if (inputName && inputExpDate && inputCVV && inputCreditCardNumber) {
                 setCreditCardDataFormIsValid(true);
+                setCreditCardData({
+                    creditCard: creditCardQuery,
+                    cvv: cvv,
+                    expDate: expDate,
+                    fullName: name,
+                });
             } else {
                 setCreditCardDataFormIsValid(false);
             };
@@ -55,6 +64,7 @@ const CreditCardData = (props) => {
         const value = event.target.value;
 
         if (name === 'Name') {
+            setName(value);
             if (value.length > 0) {
                 setInputName(true);
             } else {
@@ -63,6 +73,7 @@ const CreditCardData = (props) => {
         };
 
         if (name === 'ExpDate') {
+            setExpDate(value);
             if (value.length > 0) {
                 setInputExpDate(true);
             } else {
@@ -71,6 +82,7 @@ const CreditCardData = (props) => {
         };
 
         if (name === 'CVV') {
+            setCvv(value);
             if (value.length > 0) {
                 setInputCVV(true);
             } else {
@@ -95,18 +107,18 @@ const CreditCardData = (props) => {
                 <div className='Row_CreditCardData'>
                     <div className='InputGroup_CreditCardData'>
                         <label>Full Name</label>
-                        <input type='text' name='Name' onChange={handleChange} />
+                        <input type='text' name='Name' value={name} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className='Row_CreditCardData'>
                     <div className='InputGroup_CreditCardData'>
                         <label>Exp. Date</label>
-                        <input type='text' name='ExpDate' onChange={handleChange} />
+                        <input type='text' name='ExpDate' value={expDate} onChange={handleChange} />
                     </div>
                     <div className='InputGroup_CreditCardData'>
                         <label>CVV</label>
-                        <input type='text' name='CVV' onChange={handleChange} />
+                        <input type='text' name='CVV' value={cvv} onChange={handleChange} />
                     </div>
                 </div>
             </div>

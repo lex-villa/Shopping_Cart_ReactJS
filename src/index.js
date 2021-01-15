@@ -11,7 +11,7 @@ import App from './App';
 import productsReducer from './store/reducers/products';
 import orderReducer from './store/reducers/order';
 import cartReducer from './store/reducers/cart';
-import { watchProducts } from './store/sagas/index';
+import { watchProducts, watchOrder } from './store/sagas/index';
 
 import './index.css';
 
@@ -31,6 +31,7 @@ const store = createStore(rootReducer, composeEnhancers(
 ));
 
 sagaMiddleware.run(watchProducts);
+sagaMiddleware.run(watchOrder);
 
 
 ReactDOM.render(

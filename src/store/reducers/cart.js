@@ -6,6 +6,7 @@ const initialState = {
     itemCounter: 0,
 };
 
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_PRODUCT:

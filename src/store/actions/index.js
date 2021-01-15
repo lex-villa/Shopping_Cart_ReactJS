@@ -16,3 +16,10 @@ export {
     addProduct,
     removeProduct,
 } from './cart';
+
+export {
+    purchaseProducts,
+    purchaseProductsStart,
+    purchaseProductsSuccess,
+    purchaseProductsFail,
+} from './order';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import PaymentForm from './PaymentForm/PaymentForm';
@@ -8,16 +8,23 @@ import * as actions from '../../store/actions/index';
 import './Payment.css';
 
 const Payment = (props) => {
+    const [formIsValid, setFormIsValid] = useState(false);
+    const [btnDisabled, setBtnDisabled] = useState(true);
+
     return (
         <div className='PaymentSection_Container'>
             <div className='firstContainer'>
-                <PaymentForm />
+                <PaymentForm
+                    setFormIsValid={setFormIsValid}
+                    setBtnDisabled={setBtnDisabled}
+                />
             </div>
             <div>
-                <PaymentProducts 
+                <PaymentProducts
                     productsInCart={props.productsInCart}
                     totalPrice={props.totalPrice}
                     onProductRemoved={props.onProductRemoved}
+                    btnDisabled={btnDisabled}
                 />
             </div>
         </div>

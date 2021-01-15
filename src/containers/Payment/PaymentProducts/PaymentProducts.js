@@ -23,7 +23,7 @@ const PaymentProducts = (props) => {
             })}
             <p className="Subtotal_PaymentProducts">Subtotal: <span>${props.totalPrice}</span></p>
             <div className="btnProceedPayment_PaymentProducts">
-                <Button btnType='Payment'>Proceed to payment</Button>
+                <Button btnType='Payment' disabled={props.btnDisabled}>Proceed to payment</Button>
             </div>
         </div>
     );

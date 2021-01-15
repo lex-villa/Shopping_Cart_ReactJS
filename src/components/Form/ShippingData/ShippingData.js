@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import './ShippingData.css'
 
-const ShippingData = () => {
+const ShippingData = (props) => {
+    const { setShippingDataFormIsValid } = props;
+
     const [ziCodeQuery, setZipCodeQuery] = useState("");
 
     const [inputName, setInputName] = useState(false);
@@ -12,10 +14,6 @@ const ShippingData = () => {
     const [inputState, setInputState] = useState(false);
     const [inputPhoneNumber, setInputPhoneNumber] = useState(false);
     const [inputZipCode, setInputZipCode] = useState(false)
-
-    const [shippingDataFormIsValid, setShippingDataFormIsValid] = useState(false);
-
-    console.log('el form es valido?', shippingDataFormIsValid)
 
     const ziCodeValidation = (zcQuery) => {
         fetch(`http://localhost:8080/validate/zipcode/${zcQuery}`, {
@@ -43,9 +41,9 @@ const ShippingData = () => {
         return () => clearTimeout(timeOutId);
     }, [ziCodeQuery]);
 
-    useEffect(()=> {
+    useEffect(() => {
         const checkValidityShippingDataForm = () => {
-            console.log(inputName , inputLastName , inputAdress , inputCity , inputState , inputPhoneNumber , inputZipCode)
+            console.log(inputName, inputLastName, inputAdress, inputCity, inputState, inputPhoneNumber, inputZipCode)
             if (inputName && inputLastName && inputAdress && inputCity && inputState && inputPhoneNumber && inputZipCode) {
                 setShippingDataFormIsValid(true);
             } else {
@@ -53,7 +51,7 @@ const ShippingData = () => {
             };
         };
         checkValidityShippingDataForm();
-    }, [inputName , inputLastName , inputAdress , inputCity , inputState , inputPhoneNumber , inputZipCode])
+    }, [inputName, inputLastName, inputAdress, inputCity, inputState, inputPhoneNumber, inputZipCode, setShippingDataFormIsValid])
 
     const handleChange = (event) => {
         const name = event.target.name;

@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import './CreditCardData.css';
 
 
-const CreditCardData = () => {
+const CreditCardData = (props) => {
+    const { setCreditCardDataFormIsValid } = props;
+
     const [creditCardQuery, setCreditCardQuery] = useState("");
 
     const [inputName, setInputName] = useState(false);
@@ -11,9 +13,6 @@ const CreditCardData = () => {
     const [inputCVV, setInputCVV] = useState(false);
     const [inputCreditCardNumber, setInputCreditCardNumber] = useState(false);
 
-    const [creditCardDataFormIsValid, setCreditCardDataFormIsValid] = useState(false);
-
-    console.log('el form creditcicio es valido?', creditCardDataFormIsValid)
 
     const creditCardValidation = (ccQuery) => {
         fetch(`http://localhost:8080/validate/creditcard/${ccQuery}`, {
@@ -40,7 +39,7 @@ const CreditCardData = () => {
         return () => clearTimeout(timeOutId);
     }, [creditCardQuery]);
 
-    useEffect(()=> {
+    useEffect(() => {
         const checkValidityCreditCardDataForm = () => {
             if (inputName && inputExpDate && inputCVV && inputCreditCardNumber) {
                 setCreditCardDataFormIsValid(true);
@@ -49,7 +48,7 @@ const CreditCardData = () => {
             };
         };
         checkValidityCreditCardDataForm();
-    },[inputName, inputExpDate, inputCVV, inputCreditCardNumber]);
+    }, [inputName, inputExpDate, inputCVV, inputCreditCardNumber, setCreditCardDataFormIsValid]);
 
     const handleChange = (event) => {
         const name = event.target.name;

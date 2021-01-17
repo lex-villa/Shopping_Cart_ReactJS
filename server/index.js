@@ -92,7 +92,7 @@ app.post('/validate/creditcard/:cc', (req, res) => {
 
 app.post('/order', (req, res) => {
   let data = req.body;
-
+  console.log(data)
   if (validateCardData(data.creditCardData) && validateShipping(data.shippingData)) {
     return res.status(200).json({ message: 'success' });
   }

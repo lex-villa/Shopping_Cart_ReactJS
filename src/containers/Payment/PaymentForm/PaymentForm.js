@@ -13,10 +13,12 @@ const PaymentForm = (props) => {
 
     const [shippingData, setShippingData] = useState({});
     const [creditCardData, setCreditCardData] = useState({});
-    
+
 
     const checkFormValidity = (shippingDataFormIsValid, creditCardDataFormIsValid) => {
         if (shippingDataFormIsValid && creditCardDataFormIsValid) {
+            console.log('entro a cambiar este pedi')
+            //Aqui es donde se quiebra
             setFormIsValid(true);
             setBtnDisabled(false);
             setOrderData({
@@ -30,14 +32,35 @@ const PaymentForm = (props) => {
         } else {
             setFormIsValid(false);
             setBtnDisabled(true);
+            console.log('vino al else')
         };
+
     };
+
 
     checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
 
     // useState(() => {
-    //     checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
-    // }, [shippingDataFormIsValid, creditCardDataFormIsValid])
+    //     // checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
+    // //     if (shippingDataFormIsValid && creditCardDataFormIsValid) {
+    // //         console.log('entro a cambiar este pedi')
+    // //         setFormIsValid(true);
+    // //         setBtnDisabled(false);
+    // //         setOrderData({
+    // //             shippingData: {
+    // //                 ...shippingData,
+    // //             },
+    // //             creditCardData: {
+    // //                 ...creditCardData,
+    // //             },
+    // //         });
+    // //     } else {
+    // //         setFormIsValid(false);
+    // //         setBtnDisabled(true);
+    // //         console.log('vino al else')
+    // //     };
+
+    // // }, [shippingDataFormIsValid, creditCardDataFormIsValid])
 
     return (
         <div className='PaymentFormContainer'>

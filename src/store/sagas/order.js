@@ -12,11 +12,11 @@ export function* purchaseProductsSaga(action) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(
-                ...action.orderData
+                action.orderData
             ),
         });
         const responseJson = yield response.json();
-        console.log('responseJson', responseJson)
+        console.log('responseJsonMessage', responseJson.message)
         yield put(actions.purchaseProductsSuccess(responseJson));
     } catch (error) {
         yield put(actions.purchaseProductsFail(error));

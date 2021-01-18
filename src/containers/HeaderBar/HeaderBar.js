@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
@@ -10,7 +10,9 @@ import './HeaderBar.css';
 const HeaderBar = (props) => {
     const location = useLocation();
 
-    console.log(location)
+    useEffect(() => {
+        console.log('se renderiza header')
+    }, [location.pathname])
 
     return (
         <header className='HeaderBar'>
@@ -18,8 +20,11 @@ const HeaderBar = (props) => {
                 <Logo />
             </div>
             <div className='LogoShoppingCartContainer'>
-                {location.pathname !== '/Payment' ? <ShoppingCartLogo clicked={props.clicked} itemCounter={props.itemCounter} /> : null}
-
+                {location.pathname === '/Payment' || location.pathname === '/Success' ?
+                    null
+                    : 
+                    <ShoppingCartLogo clicked={props.clicked} itemCounter={props.itemCounter} />
+                }
             </div>
         </header>
     )

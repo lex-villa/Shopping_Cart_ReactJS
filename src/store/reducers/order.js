@@ -15,7 +15,8 @@ const reducer = (state = initialState, action) => {
 
         case actionTypes.PURCHASE_PRODUCTS_SUCCESS:
             let isPurchased = false;
-            const message = action.message;
+            const message = action.responseObj.message;
+            console.log('message', message)
 
             if (message === 'success') {
                 isPurchased = true;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CreditCardData from '../../../components/Form/CreditCardData/CreditCardData';
 import ShippingData from '../../../components/Form/ShippingData/ShippingData';
@@ -15,52 +15,38 @@ const PaymentForm = (props) => {
     const [creditCardData, setCreditCardData] = useState({});
 
 
-    const checkFormValidity = (shippingDataFormIsValid, creditCardDataFormIsValid) => {
-        if (shippingDataFormIsValid && creditCardDataFormIsValid) {
-            console.log('entro a cambiar este pedi')
-            //Aqui es donde se quiebra
-            setFormIsValid(true);
-            setBtnDisabled(false);
-            setOrderData({
-                shippingData: {
-                    ...shippingData,
-                },
-                creditCardData: {
-                    ...creditCardData,
-                },
-            });
-        } else {
-            setFormIsValid(false);
-            setBtnDisabled(true);
-            console.log('vino al else')
+    
+
+    useEffect(() => {
+        const checkFormValidity = (shippingDataFormIsValid, creditCardDataFormIsValid) => {
+            if (shippingDataFormIsValid && creditCardDataFormIsValid) {
+                console.log('entro a cambiar este pedi')
+                //Aqui es donde se quiebra
+                setFormIsValid(true);
+                setBtnDisabled(false);
+                setOrderData({
+                    shippingData: {
+                        ...shippingData,
+                    },
+                    creditCardData: {
+                        ...creditCardData,
+                    },
+                });
+            } else {
+                setFormIsValid(false);
+                setBtnDisabled(true);
+                console.log('vino al else')
+            };
+    
         };
 
-    };
 
+        checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
+        
+    }, [shippingDataFormIsValid, creditCardDataFormIsValid, setBtnDisabled, setFormIsValid, setOrderData, creditCardData, shippingData])
 
-    checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
+    
 
-    // useState(() => {
-    //     // checkFormValidity(shippingDataFormIsValid, creditCardDataFormIsValid);
-    // //     if (shippingDataFormIsValid && creditCardDataFormIsValid) {
-    // //         console.log('entro a cambiar este pedi')
-    // //         setFormIsValid(true);
-    // //         setBtnDisabled(false);
-    // //         setOrderData({
-    // //             shippingData: {
-    // //                 ...shippingData,
-    // //             },
-    // //             creditCardData: {
-    // //                 ...creditCardData,
-    // //             },
-    // //         });
-    // //     } else {
-    // //         setFormIsValid(false);
-    // //         setBtnDisabled(true);
-    // //         console.log('vino al else')
-    // //     };
-
-    // // }, [shippingDataFormIsValid, creditCardDataFormIsValid])
 
     return (
         <div className='PaymentFormContainer'>

@@ -10,7 +10,10 @@ export function* purchaseProductsSaga(action) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(
+                {...action.orderData}
+            ),
         });
         const responseJson = yield response.json();
         console.log('responseJson', responseJson)

@@ -12,7 +12,7 @@ export function* purchaseProductsSaga(action) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(
-                {...action.orderData}
+                ...action.orderData
             ),
         });
         const responseJson = yield response.json();
